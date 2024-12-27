@@ -143,3 +143,7 @@ vim.keymap.set('n', '<leader>fq', function()
         keywords="TASK,FIXIT"
     })
 end, { noremap = true, silent = true })
+
+-- Turn on multiline up/down behavior
+vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
+vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
