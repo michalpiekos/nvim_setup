@@ -11,6 +11,7 @@ return {
                                         "--with-filename",
                                         "--line-number",
                                         "--column",
+                                        "--no-ignore",
                                         --"--glob", "!nrf/**",
                                         --"--glob", "!nrfxlib/**",
                                         --"--glob", "!modules/**",
