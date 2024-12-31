@@ -5,6 +5,15 @@ return {
 			options = {
 				theme = "catppuccin",
 			},
+			sections = {
+				lualine_z = {                                                                                                                                           
+                                        {                                                                                                                                               
+                                                function()                                                                                                                              
+                                                        return string.format('Ln %d, Col %d', vim.fn.line('.'), vim.fn.virtcol('.'))                                                    
+                                                end,                                                                                                                                    
+                                        },                                                                                                                                              
+                                },
+			},
 		})
 	end,
 }
