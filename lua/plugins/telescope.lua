@@ -61,8 +61,18 @@ return {
                         vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
                         --vim.keymap.set('n', '<leader>fq', ':Telescope quickfix<CR>', {})
                         require("telescope").load_extension("live_grep_args")
-                        local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
-                        vim.keymap.set("n", "<leader>fc", live_grep_args_shortcuts.grep_word_under_cursor)
+                        local live_grep_args = require("telescope-live-grep-args.shortcuts")
+                        vim.keymap.set("n", "<leader>fc", live_grep_args.grep_word_under_cursor)
+                        vim.keymap.set("v", "<leader>fg", live_grep_args.grep_visual_selection, {
+                                noremap = true, silent = true, desc="Live grep with highlighted text"
+                        })
+                        vim.keymap.set("v", "<leader>ff", function()
+                                local function get_visual_selection()
+                                        vim.cmd('noau normal! "vy"')
+                                        return vim.fn.getreg("v")
+                                end
+                                require("telescope.builtin").find_files({ default_text = get_visual_selection() })
+                        end, { noremap = true, silent = true, desc = "Find file from selection" })
                 end
         },
 }
