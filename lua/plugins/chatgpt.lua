@@ -10,7 +10,10 @@ return {
                 config = function()
                         require("chatgpt").setup({
                                 openai_params = {
-                                        model = "gpt-40"
+                                        model = "gpt-4.1"
+                                },
+                                popup_input = {
+                                        submit = "<CR>"
                                 }
                         })
                 end
