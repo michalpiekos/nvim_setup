@@ -103,7 +103,6 @@ vim.g.VM_leader = '\\'
 --vim.g.VM_maps = vim.g.VM_maps or {}
 --vim.g.VM_maps['Motion ,'] = ',,'
 
-
 -- Switching diagnostics on/off
 local diagnostics_enabled = true
 function ToggleDiagnostics()
@@ -147,3 +146,15 @@ end, { noremap = true, silent = true })
 -- Turn on multiline up/down behavior
 vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
+
+-- ChatGPT
+vim.keymap.set("n", "<leader>cg", ":ChatGPT<CR>", { desc = "OpenAI ChatGPT" })
+-- Explain code (visual selection)
+vim.keymap.set("v", "<leader>ce", function()
+  vim.cmd("ChatGPTRun explain_code")
+end, { desc = "Explain Code", noremap = true, silent = true })
+
+-- Generate docstring (visual selection)
+vim.keymap.set("v", "<leader>cd", function()
+  vim.cmd("ChatGPTRun docstring")
+end, { desc = "Generate Docstring", noremap = true, silent = true })
