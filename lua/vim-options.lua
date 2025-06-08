@@ -158,3 +158,78 @@ end, { desc = "Explain Code", noremap = true, silent = true })
 vim.keymap.set("v", "<leader>cd", function()
   vim.cmd("ChatGPTRun docstring")
 end, { desc = "Generate Docstring", noremap = true, silent = true })
+
+-- Show number representation
+local function to_binary(n)
+  if n == 0 then return "0" end
+  local t = {}
+  while n > 0 do
+    table.insert(t, 1, n % 2)
+    n = math.floor(n / 2)
+  end
+  return table.concat(t)
+end
+
+local function show_number_representation()
+  -- Get visual selection
+  local start_pos = vim.fn.getpos("'<")
+  local end_pos = vim.fn.getpos("'>")
+  local line = vim.fn.getline(start_pos[2])
+  local selection = string.sub(line, start_pos[3], end_pos[3])
+
+  -- Trim whitespace
+  selection = selection:match("^%s*(.-)%s*$")
+
+  local num
+  if selection:match("^0[xX][0-9a-fA-F]+$") then
+    num = tonumber(selection, 16)
+  else
+    num = tonumber(selection)
+  end
+
+  if not num then
+    vim.notify("Not a valid number: " .. selection, vim.log.levels.ERROR)
+    return
+  end
+
+  local msg = string.format(
+    "Dec: %d\nHex: 0x%X\nBin: 0b%s",
+    num, num, to_binary(num)
+  )
+
+  local buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(msg, "\n"))
+  local width = 24
+  local height = 3
+  local opts = {
+    relative = "cursor",
+    row = 1,
+    col = 0,
+    width = width,
+    height = height,
+    style = "minimal",
+    border = "rounded",
+    focusable = true,
+  }
+  local win = vim.api.nvim_open_win(buf, true, opts)  -- <== 2nd param TRUE: open in focus
+
+  -- Save the previous window so we can return
+  local prev_win = vim.api.nvim_get_current_win()
+
+  -- Esc and q to close and return focus
+  for _, key in ipairs({ "<Esc>", "q" }) do
+    vim.keymap.set('n', key, function()
+      if vim.api.nvim_win_is_valid(win) then
+        vim.api.nvim_win_close(win, true)
+      end
+      if vim.api.nvim_win_is_valid(prev_win) then
+        vim.api.nvim_set_current_win(prev_win)
+      end
+    end, { buffer = buf, nowait = true, silent = true })
+  end
+end
+
+-- Command for convenience
+vim.api.nvim_create_user_command('ShowNumRep', show_number_representation, {})
+vim.keymap.set('v', '<leader>nn', [[:<C-u>ShowNumRep<CR>]], { noremap = true, silent = true })
+
