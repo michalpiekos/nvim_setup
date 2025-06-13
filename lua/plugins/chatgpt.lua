@@ -10,7 +10,8 @@ return {
                 config = function()
                         require("chatgpt").setup({
                                 openai_params = {
-                                        model = "gpt-4.1"
+                                        model = "gpt-4.1",
+                                        max_tokens = 5000
                                 },
                                 popup_input = {
                                         submit = "<CR>"
