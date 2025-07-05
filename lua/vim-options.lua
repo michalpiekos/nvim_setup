@@ -234,6 +234,19 @@ vim.api.nvim_create_user_command('ShowNumRep', show_number_representation, {})
 vim.keymap.set('v', '<leader>nn', [[:<C-u>ShowNumRep<CR>]], { noremap = true, silent = true })
 
 vim.keymap.set('n', '<leader>gh', function() require('gitsigns').preview_hunk() end, { desc = 'Gitsigns preview hunk' })
-vim.keymap.set('n', '<leader>gr', function() vim.cmd('Gitsigns change_base HEAD') end, { desc = 'Gitsigns reset base to HEAD' })
+vim.keymap.set('n', '<leader>gR', function() vim.cmd('Gitsigns change_base HEAD') end, { desc = 'Gitsigns reset base to HEAD' })
 vim.keymap.set('n', ']c', function() require('gitsigns').next_hunk() end)
 vim.keymap.set('n', '[c', function() require('gitsigns').prev_hunk() end)
+
+local function goto_next_and_show()
+  vim.diagnostic.goto_next({ severity = nil })
+  vim.diagnostic.open_float(nil, {focus=false})
+end
+
+local function goto_prev_and_show()
+  vim.diagnostic.goto_prev({ severity = nil })
+  vim.diagnostic.open_float(nil, {focus=false})
+end
+
+vim.keymap.set('n', ']d', goto_next_and_show, { desc = "Next diagnostic (show float)" })
+vim.keymap.set('n', '[d', goto_prev_and_show, { desc = "Prev diagnostic (show float)" })
