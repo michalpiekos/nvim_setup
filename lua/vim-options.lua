@@ -199,7 +199,7 @@ local function show_number_representation()
 
   local buf = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, vim.split(msg, "\n"))
-  local width = 24
+  local width = 40
   local height = 3
   local opts = {
     relative = "cursor",
