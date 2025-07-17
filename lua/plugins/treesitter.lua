@@ -5,7 +5,7 @@ return {
                 local config = require("nvim-treesitter.configs")
                 config.setup({
                         ensure_installed = {
-                                "arduino", "asm", "bash", "bitbake", "c",
+                                "asm", "bash", "bitbake", "c",
                                 "cmake", "cpp", "devicetree", "gitignore",
                                 "go", "groovy", "html", "javascript", "kconfig",
                                 "linkerscript", "lua", "make", "markdown",

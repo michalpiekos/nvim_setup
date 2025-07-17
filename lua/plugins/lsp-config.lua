@@ -12,9 +12,10 @@ return {
                                 ensure_installed = {
                                         "lua_ls", "rust_analyzer", "arduino_language_server",
                                         "clangd", "pyright"
-                                }
+                                },
+                        automatic_enable = false,
                         })
-                end
+                end,
         },
         {
                 "neovim/nvim-lspconfig",

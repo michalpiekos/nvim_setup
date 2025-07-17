@@ -147,17 +147,12 @@ end, { noremap = true, silent = true })
 vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
 
--- ChatGPT
-vim.keymap.set("n", "<leader>cg", ":ChatGPT<CR>", { desc = "OpenAI ChatGPT" })
--- Explain code (visual selection)
-vim.keymap.set("v", "<leader>ce", function()
-  vim.cmd("ChatGPTRun explain_code")
-end, { desc = "Explain Code", noremap = true, silent = true })
-
--- Generate docstring (visual selection)
-vim.keymap.set("v", "<leader>cd", function()
-  vim.cmd("ChatGPTRun docstring")
-end, { desc = "Generate Docstring", noremap = true, silent = true })
+-- AI
+vim.keymap.set("n", "<leader>cg", ":PrtChatToggle popup<CR>", { desc = "OpenAI ChatGPT" })
+vim.keymap.set("n", "<leader>ci", ":PrtImplement<CR>", { desc = "AI Implement from selection" })
+vim.keymap.set("n", "<leader>cb", ":PrtFixBugs<CR>", { desc = "AI fix bugs" })
+vim.keymap.set("n", "<leader>ca", ":PrtAppend<CR>", { desc = "AI append" })
+vim.keymap.set("n", "<leader>cp", ":PrtPrepend<CR>", { desc = "AI prepend" })
 
 -- Show number representation
 local function to_binary(n)
