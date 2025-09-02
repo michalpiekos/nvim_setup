@@ -230,6 +230,8 @@ vim.keymap.set('v', '<leader>nn', [[:<C-u>ShowNumRep<CR>]], { noremap = true, si
 
 vim.keymap.set('n', '<leader>gh', function() require('gitsigns').preview_hunk() end, { desc = 'Gitsigns preview hunk' })
 vim.keymap.set('n', '<leader>gR', function() vim.cmd('Gitsigns change_base HEAD') end, { desc = 'Gitsigns reset base to HEAD' })
+vim.keymap.set('n', '<leader>gr', function() require('gitsigns').reset_hunk() end, { desc = 'Gitsigns reset hunk' })
+vim.keymap.set('v', '<leader>gr', ':Gitsigns reset_hunk<CR>', { desc = 'Gitsigns reset hunk' })
 vim.keymap.set('n', ']c', function() require('gitsigns').next_hunk() end)
 vim.keymap.set('n', '[c', function() require('gitsigns').prev_hunk() end)
 
