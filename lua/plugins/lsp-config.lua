@@ -23,14 +23,17 @@ return {
                 config = function()
                         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-                        local lspconfig = require("lspconfig")
-                        lspconfig.arduino_language_server.setup({
+                        vim.lsp.config("arduino_language_server", {
                                 capabilities = capabilities
                         })
-                        lspconfig.lua_ls.setup({
+                        vim.lsp.enable("arduino_language_server")
+
+                        vim.lsp.config("lua_ls", {
                                 capabilities = capabilities
                         })
-                        lspconfig.pyright.setup({
+                        vim.lsp.enable("lua_ls")
+
+                        vim.lsp.config("pyright", {
                                 on_attach = function(client , bufnr)
                                         lsp_keymap(bufnr)
                                 end,
@@ -48,7 +51,9 @@ return {
                                 },
                                 single_file_support = true
                         })
-                        lspconfig.clangd.setup({
+                        vim.lsp.enable("pyright")
+
+                        vim.lsp.config("clangd", {
                                 on_attach = function(client , bufnr)
                                         lsp_keymap(bufnr)
                                 end,
@@ -59,6 +64,7 @@ return {
                                         "--header-insertion=never",
                                 },
                         })
+                        vim.lsp.enable("clangd")
 
                         -- vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
                         -- vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})

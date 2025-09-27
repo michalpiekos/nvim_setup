@@ -105,15 +105,25 @@ vim.g.VM_leader = '\\'
 
 -- Switching diagnostics on/off
 local diagnostics_enabled = true
+-- function ToggleDiagnostics()
+--     if diagnostics_enabled then
+--         vim.diagnostic.disable()  -- Disable all diagnostics
+--         print("Diagnostics Disabled")
+--     else
+--         vim.diagnostic.enable()  -- Re-enable all diagnostics
+--         print("Diagnostics Enabled")
+--     end
+--     diagnostics_enabled = not diagnostics_enabled
+-- end
 function ToggleDiagnostics()
-    if diagnostics_enabled then
-        vim.diagnostic.disable()  -- Disable all diagnostics
-        print("Diagnostics Disabled")
-    else
-        vim.diagnostic.enable()  -- Re-enable all diagnostics
-        print("Diagnostics Enabled")
-    end
-    diagnostics_enabled = not diagnostics_enabled
+  diagnostics_active = not diagnostics_active
+  if diagnostics_active then
+    vim.diagnostic.enable(nil, { bufnr = 0 })  -- explicitly pass bufnr
+    print("Diagnostics enabled (buffer)")
+  else
+    vim.diagnostic.disable(nil, { bufnr = 0 })
+    print("Diagnostics disabled (buffer)")
+  end
 end
 vim.api.nvim_set_keymap("n", "<leader>gc", ":lua ToggleDiagnostics()<CR>", { noremap = true, silent = true })
 
