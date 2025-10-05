@@ -16,7 +16,7 @@ return {
                         preview_bg_highlight = 'Pmenu',
                         autofold_depth = nil,
                         auto_unfold_hover = true,
-                        fold_markers = { '', '' },
+                        fold_markers = { '+', '-' },
                         wrap = false,
                         keymaps = { -- These keymaps can be a string or a table for multiple keys
                                 close = {"<Esc>", "q"},
@@ -35,7 +35,7 @@ return {
                         lsp_blacklist = {},
                         symbol_blacklist = {},
                         symbols = {
-                                File = { icon = "", hl = "@text.uri" },
+                                --[[ File = { icon = "", hl = "@text.uri" },
                                 Module = { icon = "", hl = "@namespace" },
                                 Namespace = { icon = "", hl = "@namespace" },
                                 Package = { icon = "", hl = "@namespace" },
@@ -62,7 +62,7 @@ return {
                                 Operator = { icon = "+", hl = "@operator" },
                                 TypeParameter = { icon = "𝙏", hl = "@parameter" },
                                 Component = { icon = "", hl = "@function" },
-                                Fragment = { icon = "", hl = "@constant" },
+                                Fragment = { icon = "", hl = "@constant" }, ]]
                         },
                 })
         end

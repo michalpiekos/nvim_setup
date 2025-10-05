@@ -6,6 +6,8 @@ vim.g.mapleader = " "
 vim.cmd("set mouse=a")
 vim.cmd("set clipboard+=unnamedplus")
 vim.cmd("set number")
+vim.cmd("colorscheme retrobox")
+vim.g.have_nerd_fonts = false
 -- vim.cmd("set nowrap")
 
 -- Navigate vim panes better
