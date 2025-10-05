@@ -8,6 +8,11 @@ vim.cmd("set clipboard+=unnamedplus")
 vim.cmd("set number")
 vim.cmd("colorscheme habamax")
 
+vim.cmd("hi DiagnosticFloatingError ctermbg=1")
+vim.cmd("hi DiagnosticFloatingWarn ctermbg=1")
+vim.cmd("hi DiagnosticFloatingInfo ctermbg=4")
+vim.cmd("hi DiagnosticFloatingHint ctermbg=4")
+vim.cmd("hi DiagnosticFloatingOk ctermbg=4")
 vim.g.have_nerd_fonts = false
 -- vim.cmd("set nowrap")
 
