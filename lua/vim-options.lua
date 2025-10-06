@@ -9,7 +9,7 @@ vim.cmd("set number")
 vim.cmd("colorscheme habamax")
 
 vim.cmd("hi DiagnosticFloatingError ctermbg=1")
-vim.cmd("hi DiagnosticFloatingWarn ctermbg=1")
+vim.cmd("hi DiagnosticFloatingWarn ctermbg=3")
 vim.cmd("hi DiagnosticFloatingInfo ctermbg=4")
 vim.cmd("hi DiagnosticFloatingHint ctermbg=4")
 vim.cmd("hi DiagnosticFloatingOk ctermbg=4")
@@ -112,7 +112,6 @@ vim.g.VM_leader = '\\'
 --vim.g.VM_maps['Motion ,'] = ',,'
 
 -- Switching diagnostics on/off
-local diagnostics_enabled = true
 -- function ToggleDiagnostics()
 --     if diagnostics_enabled then
 --         vim.diagnostic.disable()  -- Disable all diagnostics
@@ -123,13 +122,14 @@ local diagnostics_enabled = true
 --     end
 --     diagnostics_enabled = not diagnostics_enabled
 -- end
+local diagnostics_enabled = true
 function ToggleDiagnostics()
-  diagnostics_active = not diagnostics_active
-  if diagnostics_active then
-    vim.diagnostic.enable(nil, { bufnr = 0 })  -- explicitly pass bufnr
+  diagnostics_enabled = not diagnostics_enabled
+  if diagnostics_enabled then
+    vim.diagnostic.show(nil, bufnr)  -- explicitly pass bufnr
     print("Diagnostics enabled (buffer)")
   else
-    vim.diagnostic.disable(nil, { bufnr = 0 })
+    vim.diagnostic.hide(nil, bufnr)
     print("Diagnostics disabled (buffer)")
   end
 end
