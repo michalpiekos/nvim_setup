@@ -16,13 +16,12 @@ return {
                                                         command = { temperature = 1.1, top_p = 1 },
                                                 },
                                                 topic = {
-                                                        model = "gpt-4.1",
-                                                        params = { max_completion_tokens = 64 },
+                                                        model = "gpt-5.1",
+                                                        params = { max_completion_tokens = 128 },
                                                 },
                                                 models ={
-                                                        "gpt-4o",
-                                                        "o4-mini",
-                                                        "gpt-4.1",
+                                                        "gpt-5.1",
+                                                        "gpt-5-mini",
                                                 }
                                         },
                                 },
