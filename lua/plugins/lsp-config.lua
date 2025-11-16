@@ -62,6 +62,7 @@ return {
                                         "clangd",
                                         "--offset-encoding=utf-16",
                                         "--header-insertion=never",
+                                        "--include-cleaner-stdlib=false",
                                 },
                         })
                         vim.lsp.enable("clangd")
