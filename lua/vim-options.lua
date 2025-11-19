@@ -167,11 +167,11 @@ vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true })
 
 -- AI
 vim.keymap.set("n", "<leader>cg", ":PrtChatToggle popup<CR>", { desc = "OpenAI ChatGPT" })
-vim.keymap.set("n", "<leader>ci", ":PrtImplement<CR>", { desc = "AI Implement from selection" })
-vim.keymap.set("v", "<leader>ci", ":PrtImplement<CR>", { desc = "AI Implement from selection" })
-vim.keymap.set("n", "<leader>cb", ":PrtFixBugs<CR>", { desc = "AI fix bugs" })
-vim.keymap.set("n", "<leader>ca", ":PrtAppend<CR>", { desc = "AI append" })
-vim.keymap.set("n", "<leader>cp", ":PrtPrepend<CR>", { desc = "AI prepend" })
+vim.keymap.set({"n", "v"}, "<leader>ci", ":PrtImplement<CR>", { desc = "AI Implement from selection" })
+vim.keymap.set({"n", "v"}, "<leader>cb", ":PrtFixBugs<CR>", { desc = "AI fix bugs" })
+vim.keymap.set({"n", "v"}, "<leader>ca", ":PrtAppend<CR>", { desc = "AI append" })
+vim.keymap.set({"n", "v"}, "<leader>cp", ":PrtPrepend<CR>", { desc = "AI prepend" })
+vim.keymap.set({"n", "v"}, "<leader>cr", ":PrtRewrite<CR>", { desc = "AI rewrite" })
 
 -- Show number representation
 local function to_binary(n)
