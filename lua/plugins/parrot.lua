@@ -7,6 +7,24 @@ return {
                         require("parrot").setup {
                                 -- Providers must be explicitly set up to make them available.
                                 providers = {
+                                        xai = {
+                                                name = "xai",
+                                                endpoint = "https://api.x.ai/v1/chat/completions",
+                                                model_endpoint = "https://api.x.ai/v1/language-models",
+                                                api_key = os.getenv "XAI_API_KEY",
+                                                params = {
+                                                        chat = { temperature = 1.1, top_p = 1 },
+                                                        command = { temperature = 1.1, top_p = 1 },
+                                                },
+                                                topic = {
+                                                        model = "grok-4-1-fast-reasoning",
+                                                        params = { max_completion_tokens = 64 },
+                                                },
+                                                models = {
+                                                        "grok-4-1-fast-reasoning",
+                                                        "grok-code-fast-1",
+                                                },
+                                        },
                                         openai = {
                                                 name = "openai",
                                                 api_key = os.getenv "OPENAI_API_KEY",
