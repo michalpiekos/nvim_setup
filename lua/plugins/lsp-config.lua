@@ -11,11 +11,19 @@ return {
                         require("mason-lspconfig").setup({
                                 ensure_installed = {
                                         "lua_ls", "rust_analyzer", "arduino_language_server",
-                                        "clangd", "pyright"
+                                        "clangd", "pyright", "neocmake"
                                 },
                         automatic_enable = false,
                         })
                 end,
+        },
+        {
+                "neovim/nvim-lspconfig",
+                opts = {
+                        servers = {
+                                neocmake = {},
+                        },
+                },
         },
         {
                 "neovim/nvim-lspconfig",
