@@ -251,8 +251,8 @@ vim.keymap.set('n', '<leader>gh', function() require('gitsigns').preview_hunk() 
 vim.keymap.set('n', '<leader>gE', function() vim.cmd('Gitsigns change_base HEAD') end, { desc = 'Gitsigns reset base to HEAD' })
 vim.keymap.set('n', '<leader>ge', function() require('gitsigns').reset_hunk() end, { desc = 'Gitsigns reset hunk' })
 vim.keymap.set('v', '<leader>ge', ':Gitsigns reset_hunk<CR>', { desc = 'Gitsigns reset hunk' })
-vim.keymap.set('n', '[c', function() require('gitsigns').next_hunk() end)
-vim.keymap.set('n', ']c', function() require('gitsigns').prev_hunk() end)
+vim.keymap.set('n', ']c', function() require('gitsigns').next_hunk() end)
+vim.keymap.set('n', '[c', function() require('gitsigns').prev_hunk() end)
 
 local function goto_next_and_show()
   vim.diagnostic.goto_next({ severity = nil })
@@ -264,5 +264,5 @@ local function goto_prev_and_show()
   vim.diagnostic.open_float(nil, {focus=false})
 end
 
-vim.keymap.set('n', '[d', goto_next_and_show, { desc = "Next diagnostic (show float)" })
-vim.keymap.set('n', ']d', goto_prev_and_show, { desc = "Prev diagnostic (show float)" })
+vim.keymap.set('n', ']d', goto_next_and_show, { desc = "Next diagnostic (show float)" })
+vim.keymap.set('n', '[d', goto_prev_and_show, { desc = "Prev diagnostic (show float)" })
