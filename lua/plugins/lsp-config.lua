@@ -75,6 +75,22 @@ return {
                         })
                         vim.lsp.enable("clangd")
 
+                        vim.lsp.config("rust_analyzer", {
+                                on_attach = function(client, bufnr)
+                                        lsp_keymap(bufnr)
+                                end,
+                                capabilities = capabilities,
+                                cmd = { "rust-analyzer" },
+                                filetypes = { "rust" },
+                                settings = {
+                                        ["rust-analyzer"] = {
+                                                cargo = { allFeatures = true },
+                                                checkOnSave = true,
+                                                check = { command = "clippy" },  -- optional (needs rustup component clippy)
+                                        },
+                                },
+                        })
+                        vim.lsp.enable("rust_analyzer")
                         -- vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
                         -- vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
                         -- vim.keymap.set("n", "<leader>gc", vim.lsp.buf.imlementation, {})
