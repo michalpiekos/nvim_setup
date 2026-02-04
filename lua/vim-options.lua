@@ -14,6 +14,7 @@ vim.cmd("hi DiagnosticFloatingInfo ctermbg=4")
 vim.cmd("hi DiagnosticFloatingHint ctermbg=4")
 vim.cmd("hi DiagnosticFloatingOk ctermbg=4")
 vim.g.have_nerd_fonts = false
+vim.g.rbql_with_headers = 1
 -- vim.cmd("set nowrap")
 
 -- Navigate vim panes better
