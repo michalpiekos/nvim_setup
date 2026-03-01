@@ -253,6 +253,18 @@ end
 vim.api.nvim_create_user_command('ShowNumRep', show_number_representation, {})
 vim.keymap.set('v', '<leader>nn', [[:<C-u>ShowNumRep<CR>]], { noremap = true, silent = true })
 
+vim.keymap.set("n", "gf", function()
+        local row = vim.api.nvim_win_get_cursor(0)[1]
+        vim.lsp.buf.format({
+                range = {
+                        ["start"] = { row - 1, 0 },
+                        ["end"]   = { row, 0 },
+                }
+        })
+end)
+vim.keymap.set("v", "gf", function()
+    vim.lsp.buf.format({ async = false })
+end)
 vim.keymap.set('n', '<leader>gh', function() require('gitsigns').preview_hunk() end, { desc = 'Gitsigns preview hunk' })
 vim.keymap.set('n', '<leader>gE', function() vim.cmd('Gitsigns change_base HEAD') end, { desc = 'Gitsigns reset base to HEAD' })
 vim.keymap.set('n', '<leader>ge', function() require('gitsigns').reset_hunk() end, { desc = 'Gitsigns reset hunk' })
