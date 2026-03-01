@@ -16,7 +16,8 @@ return {
                                                 ["<cr>"] = "open_tab_drop",
                                                 -- ["<cr>"] = "open_tabnew",
                                                 ["t"] = "open",
-                                        }
+                                        },
+                                        auto_expand_width=true,
                                 },
                                 filesystem = {
                                         filtered_items = {
