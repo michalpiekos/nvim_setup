@@ -284,3 +284,4 @@ end
 
 vim.keymap.set('n', ']d', goto_next_and_show, { desc = "Next diagnostic (show float)" })
 vim.keymap.set('n', '[d', goto_prev_and_show, { desc = "Prev diagnostic (show float)" })
+vim.api.nvim_set_hl(0, "DiagnosticDeprecated", { strikethrough = false, undercurl = false, underline = false })
