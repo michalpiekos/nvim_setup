@@ -30,15 +30,15 @@ return {
                                                 api_key = os.getenv "OPENAI_API_KEY",
                                                 endpoint = "https://api.openai.com/v1/chat/completions",
                                                 params = {
-                                                        chat = { temperature = 1.1, top_p = 1 },
-                                                        command = { temperature = 1.1, top_p = 1 },
+                                                        chat = { temperature = 1, top_p = 1 },
+                                                        command = { temperature = 1, top_p = 1 },
                                                 },
                                                 topic = {
-                                                        model = "gpt-5.2",
+                                                        model = "gpt-5.5",
                                                         params = { max_completion_tokens = 128 },
                                                 },
                                                 models ={
-                                                        "gpt-5.2",
+                                                        "gpt-5.5",
                                                         "gpt-5-mini",
                                                 }
                                         },
